@@ -1,0 +1,82 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Trang-1" id="sTGcw_oHk8gSywvpoxNB">
+    <mxGraphModel dx="4721" dy="797" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="light-dark(#FFFFFF,#FFFFFF)" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="AtLWdRQDjz4Ig-6NennM-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;gradientColor=none;fillColor=none;strokeWidth=5;strokeColor=light-dark(#000000,#000000);arcSize=6;" value="" vertex="1">
+          <mxGeometry height="267" width="1503" x="-795" y="880" as="geometry" />
+        </mxCell>
+        <mxCell id="Av1Rh2Wkp3bv7bgdCPHF-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;arcSize=0;strokeColor=light-dark(default, #ffffff);fillColor=none;" value="&lt;p&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 50px;&quot;&gt;LỚP GIAO DIỆN&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 50px; font-family: &amp;quot;Times New Roman&amp;quot;; color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;Streamlit&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 50px;&quot;&gt;Nhập mô tả lỗi - Xem kết quả - Điều chỉnh - Xác nhận&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="277" width="1128.5" x="-593.5" y="880" as="geometry" />
+        </mxCell>
+        <mxCell id="Av1Rh2Wkp3bv7bgdCPHF-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;gradientColor=none;fillColor=none;strokeWidth=5;strokeColor=light-dark(#000000,#000000);arcSize=6;" value="" vertex="1">
+          <mxGeometry height="304" width="1503" x="-790.75" y="1479" as="geometry" />
+        </mxCell>
+        <mxCell id="Av1Rh2Wkp3bv7bgdCPHF-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;arcSize=0;strokeColor=light-dark(default, #ffffff);fillColor=none;" value="&lt;p&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); font-size: 50px;&quot;&gt;LỚP XỬ LÝ NGHIỆP VỤ&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); font-size: 50px;&quot;&gt;Python&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); font-size: 50px;&quot;&gt;Kiểm tra đầu vào - Điều phối xử lý - Áp dụng quy tắc ưu tiên - Xác nhận&lt;/font&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="277" width="1518.5" x="-795" y="1479" as="geometry" />
+        </mxCell>
+        <mxCell id="Av1Rh2Wkp3bv7bgdCPHF-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;gradientColor=none;fillColor=none;strokeWidth=5;strokeColor=light-dark(#000000,#000000);arcSize=6;" value="" vertex="1">
+          <mxGeometry height="304" width="1157" x="-1244" y="2075" as="geometry" />
+        </mxCell>
+        <mxCell id="Av1Rh2Wkp3bv7bgdCPHF-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;arcSize=0;strokeColor=light-dark(default, #ffffff);fillColor=none;" value="&lt;p&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 50px;&quot;&gt;BỘ PHÂN LOẠI ML&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 50px;&quot;&gt;Scikit-learn&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 50px;&quot;&gt;Tiền xử lý văn bản - Dự đoán nhóm sự cố - Độ tin cậy&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="277" width="1402" x="-1369" y="2075" as="geometry" />
+        </mxCell>
+        <mxCell id="Av1Rh2Wkp3bv7bgdCPHF-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;gradientColor=none;fillColor=none;strokeWidth=5;strokeColor=light-dark(#000000,#000000);arcSize=6;" value="" vertex="1">
+          <mxGeometry height="304" width="1157" x="-28.5" y="2075" as="geometry" />
+        </mxCell>
+        <mxCell id="Av1Rh2Wkp3bv7bgdCPHF-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;arcSize=0;strokeColor=light-dark(default, #ffffff);fillColor=none;" value="&lt;p&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); font-size: 50px;&quot;&gt;LỚP DỮ LIỆU&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); font-size: 50px;&quot;&gt;SQLite&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); font-size: 50px;&quot;&gt;Lưu yêu cầu - Kết quả chính thức - Lịch sử điều chỉnh&lt;/font&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="277" width="1402" x="-151" y="2091.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Av1Rh2Wkp3bv7bgdCPHF-10" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);endSize=20;startSize=21;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-44.75" y="1312.25" as="sourcePoint" />
+            <mxPoint x="-44.75" y="1203" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Av1Rh2Wkp3bv7bgdCPHF-11" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);endSize=20;startSize=21;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-14.75" y="1203" as="sourcePoint" />
+            <mxPoint x="-14.75" y="1313" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Av1Rh2Wkp3bv7bgdCPHF-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;arcSize=0;strokeColor=light-dark(default, #ffffff);fillColor=none;" value="&lt;p&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); font-size: 50px;&quot;&gt;Gửi yêu cầu và nhận kết quả&lt;br&gt;&lt;/font&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="182" width="633" x="-325" y="1290" as="geometry" />
+        </mxCell>
+        <mxCell id="Av1Rh2Wkp3bv7bgdCPHF-14" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);endSize=20;startSize=21;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-621" y="1933.25" as="sourcePoint" />
+            <mxPoint x="-621" y="1824" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Av1Rh2Wkp3bv7bgdCPHF-15" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);endSize=20;startSize=21;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="-591" y="1824" as="sourcePoint" />
+            <mxPoint x="-591" y="1934" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Av1Rh2Wkp3bv7bgdCPHF-16" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;arcSize=0;strokeColor=light-dark(default, #ffffff);fillColor=none;" value="&lt;p&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); font-size: 50px;&quot;&gt;Mô tả lỗi và kết quả dự đoán&lt;br&gt;&lt;/font&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="182" width="633" x="-909" y="1896" as="geometry" />
+        </mxCell>
+        <mxCell id="Av1Rh2Wkp3bv7bgdCPHF-17" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);endSize=20;startSize=21;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="440" y="1933.25" as="sourcePoint" />
+            <mxPoint x="440" y="1824" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Av1Rh2Wkp3bv7bgdCPHF-18" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);endSize=20;startSize=21;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="470" y="1824" as="sourcePoint" />
+            <mxPoint x="470" y="1934" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Av1Rh2Wkp3bv7bgdCPHF-19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;arcSize=0;strokeColor=light-dark(default, #ffffff);fillColor=none;" value="&lt;p&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); font-size: 50px;&quot;&gt;Đọc và ghi dữ liệu&amp;nbsp;&lt;/font&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="182" width="633" x="152" y="1896" as="geometry" />
+        </mxCell>
+        <mxCell id="Av1Rh2Wkp3bv7bgdCPHF-20" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;arcSize=0;strokeColor=light-dark(default, #ffffff);fillColor=none;" value="&lt;p style=&quot;&quot;&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 50px;&quot;&gt;CHÚ THÍCH&lt;/font&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p style=&quot;text-align: left;&quot;&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 50px; color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Hình chữ nhật là thành phần phần mềm; mũi tên là luồng trao đổi dữ liệu.&lt;/font&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p style=&quot;text-align: left;&quot;&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 50px; color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Giao diện gửi mô tả lỗi đến lớp xử lý nghiệp vụ.&lt;/font&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p style=&quot;text-align: left;&quot;&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 50px; color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Lớp nghiệp vụ gọi mô hình Scikit-learn để lấy nhóm sự cố và độ tin cậy; đồng thời áp dụng quy tắc nghiệp vụ để đề xuất mức ưu tiên.&lt;/font&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p style=&quot;text-align: left;&quot;&gt;&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 50px; color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Khi nhân viên xác nhận, lớp nghiệp vụ gọi lớp truy cập dữ liệu để lưu kết quả vào SQLite. Pandas hỗ trợ xử lý dữ liệu mẫu và đánh giá dữ liệu, không phải cơ sở dữ liệu thay thế SQLite.&lt;/font&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;" vertex="1">
+          <mxGeometry height="730" width="2379.5" x="-1260" y="2320" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
