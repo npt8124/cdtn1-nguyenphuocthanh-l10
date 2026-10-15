@@ -4,12 +4,9 @@
 
 | Thuật ngữ | Giải thích |
 |---|---|
-| SRS | Tài liệu đặc tả yêu cầu phần mềm. |
 | User Story (US) | Mô tả nhu cầu của người dùng theo vai trò, mục tiêu và giá trị nhận được. |
-| Functional Requirement (FR) | Yêu cầu chức năng hệ thống phải thực hiện. |
 | Non-functional Requirement (NFR) | Yêu cầu về chất lượng hoặc giới hạn vận hành có thể đo lường. |
 | MoSCoW | Phương pháp phân mức ưu tiên: MUST, SHOULD, COULD, WON’T. |
-| Actor | Vai trò bên ngoài tương tác với hệ thống. |
 | Use Case (UC) | Mô tả một chức năng theo góc nhìn tác nhân sử dụng. |
 | Nhóm sự cố | Nhãn phân loại lỗi, gồm MAN_HINH, PIN, SAC, PHAN_MEM, NUOC_VAO và KHAC. |
 | Mức ưu tiên | Mức độ cần ưu tiên xử lý yêu cầu theo quy tắc nghiệp vụ. |
