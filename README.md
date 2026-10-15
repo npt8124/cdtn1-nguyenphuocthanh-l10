@@ -25,5 +25,5 @@ Giải thích ngắn mỗi thư mục làm gì.
 npm test → hiển thị số test PASS
 ## 6. Trạng thái hiện tại
 [x] Khởi tạo project, smoke test chạy được (buổi 2)  
-[] Module tiếp nhận yêu cầu (buổi 8–10)  
+[x] Module tiếp nhận yêu cầu (buổi 8–10)  
 [] Module phân công kỹ thuật viên (buổi 10–12)  
