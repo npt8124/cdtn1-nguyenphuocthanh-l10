@@ -10,10 +10,8 @@ Hệ thống hỗ trợ nhân viên tiếp nhận bảo hành tự động phân
 Hệ thống cho phép nhập mô tả lỗi, tự động đề xuất nhóm sự cố và mức ưu tiên, đồng thời cho phép nhân viên kiểm tra, điều chỉnh và xác nhận kết quả phân loại.
 ## 2. Yêu cầu môi trường
 Python 3.11
-Streamlit
-Pandas
-Scikit-learn
-SQLite
+Streamlit, Pandas, Scikit-learn, Joblib, Pytest
+SQLite 3 (tích hợp sẵn trong Python)
 Biến môi trường: xem .env.example
 ## 3. Hướng dẫn chạy
 (BT2 yêu cầu ≤ 4 bước)
