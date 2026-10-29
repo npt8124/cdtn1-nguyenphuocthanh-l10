@@ -1,28 +1,26 @@
 from pathlib import Path
 import pandas as pd
-from src.features.text import normalize_text
 
-LABELS = ("MAN_HINH", "PIN", "SAC", "PHAN_MEM", "NUOC_VAO", "KHAC")
-REQUIRED = {"desc_id", "issue_desc", "issue_category", "center_id"}
-DEFAULT_CSV = Path("src/data/mau/issue_descriptions.csv")
+LABELS = ('MAN_HINH', 'PIN', 'SAC', 'PHAN_MEM', 'NUOC_VAO', 'KHAC')
 
-def load_dataset(path=DEFAULT_CSV):
+def load_dataset(path, text_col='issue_desc', label_col='issue_category'):
     path = Path(path)
     if not path.is_file():
-        raise FileNotFoundError(f"Không tìm thấy dữ liệu: {path.resolve()}")
-    df = pd.read_csv(path, encoding="utf-8-sig", dtype={"issue_desc": "string", "issue_category": "string"})
-    missing = REQUIRED - set(df.columns)
+        raise FileNotFoundError(f'Không tìm thấy CSV: {path.resolve()}')
+    df = pd.read_csv(path, encoding='utf-8-sig')
+    missing = {text_col, label_col} - set(df.columns)
     if missing:
-        raise ValueError(f"CSV thiếu cột: {', '.join(sorted(missing))}")
-    df = df.copy()
-    df["issue_desc"] = df["issue_desc"].fillna("").map(normalize_text)
-    df["issue_category"] = df["issue_category"].fillna("").str.strip().str.upper()
-    df = df[(df.issue_desc.str.len() >= 3) & df.issue_category.isin(LABELS)]
-    # Identical text with conflicting labels is ambiguous: exclude from evaluation/training.
-    conflicts = df.groupby("issue_desc").issue_category.nunique()
-    ambiguous = set(conflicts[conflicts > 1].index)
-    df = df[~df.issue_desc.isin(ambiguous)]
-    df = df.drop_duplicates(subset=["issue_desc", "issue_category"]).reset_index(drop=True)
+        raise ValueError(f'Thiếu cột bắt buộc: {sorted(missing)}; cột hiện có: {list(df.columns)}')
+    df = df[[text_col, label_col]].copy()
+    before = len(df)
+    df = df.dropna(subset=[text_col, label_col])
+    df[text_col] = df[text_col].astype(str).str.strip()
+    df[label_col] = df[label_col].astype(str).str.strip().str.upper()
+    df = df[df[text_col].ne('')]
+    bad = sorted(set(df[label_col]) - set(LABELS))
+    if bad:
+        raise ValueError(f'Nhãn không hợp lệ: {bad}')
+    # Không tự xóa trùng lặp tại đây: kiểm tra trùng lặp và tránh leakage trong train.
     if df.empty:
-        raise ValueError("Không còn bản ghi hợp lệ sau khi làm sạch.")
-    return df
+        raise ValueError('Không có dữ liệu hợp lệ.')
+    return df.reset_index(drop=True), {'so_dong_goc': before, 'so_dong_hop_le': len(df), 'phan_bo_nhan': {k:int(v) for k,v in df[label_col].value_counts().sort_index().items()}}
