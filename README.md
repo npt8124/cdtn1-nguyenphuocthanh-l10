@@ -19,24 +19,66 @@ streamlit==1.41.1
 PyYAML==6.0.2   
 Biến môi trường: xem .env.example   
 ## 3. Hướng dẫn chạy
-Bước 1. Tạo môi trường ảo Python 3.11
+### Với người dùng VS code   
+Bước 1: Tạo môi trường ảo Python 3.11   
+cd cdtn1-nguyenphuocthanh-l10
 
 py -3.11 -m venv .venv
 
-Bước 2. Kích hoạt môi trường ảo
+Bước 2: Kích hoạt môi trường ảo
 
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser   
+
 .\.venv\Scripts\Activate.ps1
 
-Bước 3. Cài đặt các thư viện cần thiết
+Bước 3: Cài đặt các thư viện cần thiết
 
 python -m pip install -r requirements.txt
 
-Bước 4. Huấn luyện, kiểm thử và khởi chạy hệ thống
+Bước 4: Huấn luyện, kiểm thử và khởi chạy hệ thống
+
+python -m src.models.train --config configs/train.yaml
+
+python -m pytest -q
+
+python -m streamlit run app.py
+
+### Lưu ý với người dùng VS Code
+Kiểm tra tính tái lập   
+Huấn luyện hai lần với cùng cấu hình và so sánh metrics.json:
 
 python -m src.models.train --config configs/train.yaml   
-python -m pytest -q   
-python -m streamlit run app.py   
+Copy-Item reports\metrics.json reports\metrics_lan1.json
+
+python -m src.models.train --config configs/train.yaml   
+Compare-Object (Get-Content reports\metrics_lan1.json) (Get-Content reports\metrics.json)
+
+Nếu Compare-Object không in ra khác biệt, hai file giống nhau.
+### Với người dùng Git Bash   
+Bước 1: Clone git về máy   
+cd /tmp && rm -rf thu-nghiem && mkdir thu-nghiem && cd thu-nghiem
+
+git clone https://github.com/npt8124/cdtn1-nguyenphuocthanh-l10
+
+Bước 2: Tạo và kích hoạt môi trường ảo python 3.11
+
+cd cdtn1-nguyenphuocthanh-l10
+
+py -3.11 -m venv .venv
+
+source .venv/Scripts/activate
+
+Bước 3: Cài đặt các thư viên cần thiết
+
+pip install -r requirements.txt
+
+Bước 4: Huấn luyện, kiểm thử và khởi chạy hệ thống
+
+python -m src.models.train --config configs/train.yaml
+
+python -m pytest -q 
+
+python -m streamlit run app.py
 ## 4. Cấu trúc thư mục
 Cấu trúc thư mục 
 cdtn1-nguyenphuocthanh-l10/   
