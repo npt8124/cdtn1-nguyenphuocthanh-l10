@@ -21,7 +21,7 @@ Biến môi trường: xem .env.example
 ## 3. Hướng dẫn chạy
 ### Với người dùng VS code   
 Bước 1: Tạo môi trường ảo Python 3.11   
-cd cdtn1-nguyenphuocthanh-l10
+cd cdtn1-nguyenphuocthanh-l10-main
 
 py -3.11 -m venv .venv
 
