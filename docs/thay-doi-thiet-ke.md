@@ -30,3 +30,5 @@
 - Quyết định : SỬA
 - Lý do : Cần bổ sung file cần thiết, commit chuẩn.
 - Ảnh hưởng : Sửa lại các file, cập nhật SRS.
+
+Không có thay đổi nào so với BT1.
