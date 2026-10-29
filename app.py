@@ -3,38 +3,108 @@ import streamlit as st
 
 from src.models.predict import load_model, predict
 from src.ui.report import show_report
-
+from src.data.database import (
+    initialize,
+    save_request,
+    list_requests,
+    list_history,
+)
 
 st.set_page_config(
     page_title="L10 – Phân loại bảo hành",
-    layout="wide"
+    layout="wide",
 )
 
-st.title("L10 – Tự động phân loại yêu cầu bảo hành")
+LABEL_NAMES = {
+    "MAN_HINH": "Màn hình",
+    "PIN": "Pin",
+    "SAC": "Sạc",
+    "PHAN_MEM": "Phần mềm",
+    "NUOC_VAO": "Nước vào",
+    "KHAC": "Khác",
+}
 
-st.caption(
-    "Bản minh họa BT2: mô hình gợi ý nhóm sự cố; "
-    "nhân viên cần kiểm tra kết quả. "
-)
+PRIORITIES = ["Thấp", "Trung bình", "Cao"]
 
 
 @st.cache_resource
 def get_model():
-    """Chỉ tải mô hình khi cần dự đoán."""
     return load_model()
 
 
+def suggest_priority(description):
+    """Quy tắc minh họa, không phải dự đoán ML."""
+    text = description.lower()
+
+    urgent_terms = [
+        "khẩn cấp",
+        "nguy hiểm",
+        "cháy",
+        "bốc khói",
+        "nóng bất thường",
+    ]
+
+    if any(term in text for term in urgent_terms):
+        return "Cao"
+
+    return "Trung bình"
+
+
+def display_scores(result):
+    scores = result.get("scores", [])
+    score_type = result.get("score_type")
+
+    st.subheader("Điểm dự đoán theo nhóm sự cố")
+
+    if not scores:
+        st.warning(
+            "Mô hình không cung cấp điểm theo từng nhãn."
+        )
+        return
+
+    if score_type == "probability":
+        st.caption(
+            "Tỷ lệ ước lượng của mô hình, "
+            "chưa hiệu chuẩn thành xác suất đúng thực tế."
+        )
+
+        for item in scores:
+            label = item["label"]
+            value = item["score"]
+
+            col1, col2 = st.columns([3, 1])
+
+            with col1:
+                st.write(
+                    f"**{LABEL_NAMES.get(label, label)}**"
+                )
+                st.progress(
+                    min(max(float(value), 0.0), 1.0)
+                )
+
+            with col2:
+                st.write(f"{value:.2%}")
+
+    elif score_type == "decision":
+        st.info(
+            "LinearSVC cung cấp điểm quyết định, "
+            "không phải xác suất. "
+            "Các điểm không được biểu diễn dưới dạng %."
+        )
+
+        for item in scores:
+            label = item["label"]
+            st.write(
+                f"{LABEL_NAMES.get(label, label)}: "
+                f"{item['score']:.4f}"
+            )
+
+
 def show_prediction():
-    st.header("Thử dự đoán nhóm sự cố")
+    st.header("Tiếp nhận và phân loại yêu cầu")
 
-    st.info(
-        "Nhập mô tả lỗi của khách hàng. "
-        "Hệ thống sẽ đề xuất một trong các nhóm sự cố."
-    )
-
-    # Trạng thái chưa có dữ liệu đầu vào
     text = st.text_area(
-        "Mô tả lỗi",
+        "Mô tả lỗi khách hàng",
         placeholder=(
             "Ví dụ: Điện thoại vẫn đổ chuông "
             "nhưng màn hình tối đen"
@@ -43,125 +113,249 @@ def show_prediction():
         key="issue_description",
     )
 
-    # Tải mô hình độc lập với trang báo cáo
-    with st.spinner("Đang kiểm tra mô hình..."):
-        try:
+    try:
+        with st.spinner("Đang tải mô hình..."):
             bundle = get_model()
-            model_error = None
-        except Exception as exc:
-            bundle = None
-            model_error = str(exc)
-
-    if bundle is None:
-        st.error(
-            "Không thể tải mô hình dự đoán: "
-            f"{model_error}"
-        )
-
-        st.info(
-            "Hãy chạy lệnh huấn luyện để tạo "
-            "artifacts/warranty_model.joblib."
-        )
-
+    except Exception as exc:
+        st.error(f"Không thể tải mô hình: {exc}")
         st.code(
-            "python -m src.models.train --config configs/train.yaml",
+            "python -m src.models.train "
+            "--config configs/train.yaml",
             language="powershell",
         )
-
         return
 
-    st.success("Mô hình đã sẵn sàng.")
-
     if st.button("Phân loại", type="primary"):
-        # Xóa kết quả cũ trước khi xử lý lần mới
         st.session_state.pop("last_prediction", None)
 
-        if not text.strip():
-            st.warning(
-                "Mô tả đang rỗng. Hãy nhập nội dung."
-            )
-        else:
-            with st.spinner("Đang phân loại..."):
-                try:
-                    result = predict(bundle, text)
-
-                    st.session_state["last_prediction"] = {
-                        "text": text,
-                        "result": result,
-                    }
-
-                except ValueError as exc:
-                    st.error(
-                        f"Không thể phân loại: {exc}"
-                    )
-
-                except Exception:
-                    st.error(
-                        "Đã xảy ra lỗi khi dự đoán. "
-                        "Vui lòng kiểm tra mô hình "
-                        "hoặc thử lại."
-                    )
+        with st.spinner("Đang phân loại..."):
+            try:
+                result = predict(bundle, text)
+                st.session_state["last_prediction"] = {
+                    "text": text,
+                    "result": result,
+                }
+            except ValueError as exc:
+                st.error(str(exc))
+            except Exception:
+                st.error(
+                    "Không thể dự đoán. "
+                    "Vui lòng kiểm tra mô hình."
+                )
 
     last = st.session_state.get("last_prediction")
 
-    # Không hiển thị kết quả cũ khi người dùng đổi nội dung
     if last is None or last["text"] != text:
+        st.info(
+            "Nhập mô tả hợp lệ và chọn Phân loại "
+            "để xem kết quả."
+        )
         return
 
     result = last["result"]
 
+    st.divider()
     st.subheader("Kết quả phân loại")
 
+    predicted_label = result["label"]
+
     st.success(
-        f"Nhóm đề xuất: {result['label']}"
+        "Nhóm AI đề xuất: "
+        f"{LABEL_NAMES.get(predicted_label, predicted_label)}"
     )
 
-    confidence = result.get("confidence")
+    display_scores(result)
 
-    if confidence is None:
+    if result.get("needs_review", True):
         st.warning(
-            "Mô hình không cung cấp xác suất dự đoán. "
-            "Cần nhân viên kiểm tra thủ công."
+            "Kết quả cần được nhân viên kiểm tra."
         )
     else:
-        st.metric(
-            "Điểm dự đoán",
-            f"{confidence:.1%}"
+        st.info(
+            "Điểm dự đoán đạt ngưỡng tham khảo. "
+            "Nhân viên vẫn cần xác nhận."
         )
 
-        if not result.get(
-            "confidence_calibrated", False
-        ):
-            st.caption(
-                "Điểm dự đoán chưa được hiệu chuẩn "
-                "thành xác suất đúng thực tế."
+    st.divider()
+    st.subheader("Điều chỉnh và xác nhận kết quả")
+
+    labels = list(bundle.get("labels", []))
+
+    if not labels:
+        labels = [
+            item["label"]
+            for item in result.get("scores", [])
+        ]
+
+    if predicted_label not in labels:
+        st.error(
+            "Nhãn dự đoán không nằm trong danh sách "
+            "nhãn hợp lệ."
+        )
+        return
+
+    suggested_priority = suggest_priority(text)
+
+    with st.form("confirm_form"):
+        final_label = st.selectbox(
+            "Nhóm sự cố sau khi kiểm tra",
+            options=labels,
+            index=labels.index(predicted_label),
+            format_func=lambda label: (
+                LABEL_NAMES.get(label, label)
+            ),
+        )
+
+        st.caption(
+            "Mức ưu tiên do quy tắc nghiệp vụ "
+            "minh họa đề xuất, không phải ML."
+        )
+
+        final_priority = st.selectbox(
+            "Mức ưu tiên",
+            options=PRIORITIES,
+            index=PRIORITIES.index(
+                suggested_priority
+            ),
+        )
+
+        confirmed = st.form_submit_button(
+            "Xác nhận và lưu kết quả",
+            type="primary",
+        )
+
+    if confirmed:
+        try:
+            request_id = save_request(
+                description=text,
+                result=result,
+                suggested_priority=suggested_priority,
+                final_label=final_label,
+                final_priority=final_priority,
             )
 
-        if result.get("needs_review", True):
-            st.warning(
-                "Cần kiểm tra thủ công; "
-                "chưa đạt ngưỡng tham khảo."
+            st.success(
+                f"Đã xác nhận yêu cầu #{request_id}."
+            )
+
+            st.session_state.pop(
+                "last_prediction", None
+            )
+        except Exception as exc:
+            st.error(
+                f"Không thể lưu yêu cầu: {exc}"
+            )
+
+
+def show_requests():
+    st.header("Danh sách yêu cầu bảo hành")
+
+    try:
+        rows = list_requests()
+    except Exception as exc:
+        st.error(f"Không thể tải danh sách: {exc}")
+        return
+
+    if not rows:
+        st.info("Chưa có yêu cầu được xác nhận.")
+        return
+
+    st.caption(f"Tổng số yêu cầu: {len(rows)}")
+
+    for row in rows:
+        with st.expander(
+            f"#{row['id']} – "
+            f"{LABEL_NAMES.get(row['final_label'], row['final_label'])} "
+            f"– {row['created_at']}"
+        ):
+            st.write(
+                "**Mô tả:**", row["description"]
+            )
+            st.write(
+                "**AI đề xuất:**",
+                LABEL_NAMES.get(
+                    row["suggested_label"],
+                    row["suggested_label"],
+                ),
+            )
+            st.write(
+                "**Nhân viên xác nhận:**",
+                LABEL_NAMES.get(
+                    row["final_label"],
+                    row["final_label"],
+                ),
+            )
+            st.write(
+                "**Mức ưu tiên:**",
+                row["final_priority"],
+            )
+
+
+def show_history():
+    st.header("Lịch sử phân loại")
+
+    try:
+        rows = list_history()
+    except Exception as exc:
+        st.error(f"Không thể tải lịch sử: {exc}")
+        return
+
+    if not rows:
+        st.info("Chưa có lịch sử phân loại.")
+        return
+
+    for row in rows:
+        if row["action"] == "CONFIRM":
+            st.write(
+                f"Yêu cầu #{row['request_id']}: "
+                f"Đã xác nhận – {row['created_at']}"
             )
         else:
-            st.info(
-                "Đã đạt ngưỡng tham khảo, "
-                "nhưng vẫn cần nhân viên xác nhận."
+            st.write(
+                f"Yêu cầu #{row['request_id']}: "
+                f"Điều chỉnh {row['field']} "
+                f"từ {row['old_value']} "
+                f"sang {row['new_value']} "
+                f"– {row['created_at']}"
             )
 
-    st.caption(
-        "Hệ thống không tự động xác nhận "
-        "hoặc từ chối bảo hành."
-    )
 
+st.title("L10 – Tự động phân loại yêu cầu bảo hành")
 
-# Hai trang hoạt động độc lập
-tab_predict, tab_report = st.tabs([
-    "Thử dự đoán",
-    "Kết quả đánh giá",
+st.caption(
+    "Hệ thống hỗ trợ nhân viên phân loại và "
+    "xác nhận yêu cầu bảo hành."
+)
+
+try:
+    initialize()
+    database_ready = True
+except Exception as exc:
+    database_ready = False
+    st.error(f"Không thể khởi tạo SQLite: {exc}")
+
+tab1, tab2, tab3, tab4 = st.tabs([
+    "Tiếp nhận và phân loại",
+    "Danh sách yêu cầu",
+    "Lịch sử phân loại",
+    "Kết quả đánh giá ML",
 ])
 
-with tab_predict:
-    show_prediction()
+with tab1:
+    if database_ready:
+        show_prediction()
+    else:
+        st.warning(
+            "Chức năng lưu yêu cầu tạm thời không khả dụng."
+        )
 
-with tab_report:
+with tab2:
+    if database_ready:
+        show_requests()
+
+with tab3:
+    if database_ready:
+        show_history()
+
+with tab4:
     show_report()
