@@ -45,18 +45,18 @@ cdtn1-nguyenphuocthanh-l10/
 ├── configs # chứa cấu hình huấn luyện   
 │ └── train.yaml # siêu tham số, hạt giống ngẫu nhiên   
 ├── docs # tài liệu phân tích và đặc tả hệ thống   
-│ └── ai-disclosure.md
-│ └── architecture.drawio
-│ └── Buổi 2 Phiếu phạm vi bài toán cá nhân 261_71ITGR40203_06_Base.docx
-│ └── Buổi 4 Báo cáo thực hành 261_71ITGR40203_06.docx
-│ └── ml-pipeline.drawio
-│ └── ml-problem-statement.md
-│ └──srs.md
-│ └── thay-doi-thiet-ke.md
-│ └── a
-│ └── a
-│ └── a
-├── src/ # mã nguồn chính của hệ thống   
+│ └── ai-disclosure.md # bảng khai báo sử dụng công cụ AI   
+│ └── architecture.drawio # sơ đồ kiến trúc hệ thống   
+│ └── Buổi 2 Phiếu phạm vi bài toán cá nhân 261_71ITGR40203_06_Base.docx # báo cáo buổi 2   
+│ └── Buổi 4 Báo cáo thực hành 261_71ITGR40203_06.docx # báo cáo buổi 4   
+│ └── ml-pipeline.drawio # sơ đồ pipeline    
+│ └── ml-problem-statement.md # các vấn đề gặp phải   
+│ └── srs.md # file SRS đặc tả yêu cầu hệ thống   
+│ └── thay-doi-thiet-ke.md # file thể hiện chi tiết những thay đổi trong thiết kế   
+│ └── usecase.drawio # các usecase    
+│ └── wireframe1.jpg # ảnh màn hình 1, 2   
+│ └── wireframe2.jpg # ảnh màn hình 3   
+├── src/ # mã nguồn chính của hệ thống     
 │ ├── data/ xử lý và chuẩn bị dữ liệu   
 │ │ ├── mau/ # chứa tập dữ liệu mẫu   
 │ │ │   └── issue_descriptions.csv   
