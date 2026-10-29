@@ -1,0 +1,9 @@
+duong_dan_du_lieu: src/data/mau/issue_descriptions.csv
+hat_giong: 42
+cot_van_ban: issue_desc
+cot_nhan: issue_category
+C_thu: [0.1, 1.0, 10.0]
+min_df: 2
+max_features: 20000
+ngram_range: [1, 2]
+nguong_tin_cay: 0.70
