@@ -29,7 +29,7 @@ Bước 2: Kích hoạt môi trường ảo
 
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser   
 
-.\.venv\Scripts\Activate.ps1
+./.venv/Scripts/Activate.ps1
 
 Bước 3: Cài đặt các thư viện cần thiết
 
