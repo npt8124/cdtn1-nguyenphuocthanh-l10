@@ -26,7 +26,7 @@
 
 ### Dữ liệu sai
 | TC-05: Không nhập mô tả · Ưu tiên: Cao   
-| Bước      : 1. Không nhập mô tả lỗi
+| Bước      : 1. Không nhập mô tả lỗi   
 | Mong đợi  : Vui lòng nhập mô tả lỗi.   
 | Thực tế   : Vui lòng nhập mô tả lỗi.    
 | PASS · docs/screenshots/TC-05.png 
@@ -45,7 +45,7 @@
 
 | TC-11 (TC-03): Xử lý chuỗi rỗng và khoảng trắng · Ưu tiên: Cao   
 | Bước      : 1. Chạy môi trường ảo: ./.venv/Scripts/Activate.ps1
-              2. python -m pytest -q hoặc python -m pytest -v
+              2. python -m pytest -q hoặc python -m pytest -v   
 | Mong đợi  : PASSED   
 | Thực tế   : tests/test_text.py::test_TT03_chuoi_rong_hoac_chi_co_khoang_trang PASSED             
 | PASS · docs/screenshots/TC-11.png 
@@ -53,7 +53,7 @@
 ### Chất lượng dữ liệu/Tái lập
 | TC-08 (test_split_disjoint_and_deterministic): Kiểm tra tập dữ liệu không trùng và chia có tính xác định · Ưu tiên: Cao   
 | Bước      : 1. Chạy môi trường ảo: ./.venv/Scripts/Activate.ps1
-              2. python -m pytest -q hoặc python -m pytest -v
+              2. python -m pytest -q hoặc python -m pytest -v   
 | Mong đợi  : PASSED   
 | Thực tế   : tests/test_split.py::test_split_disjoint_and_deterministic PASSED       
 | PASS · docs/screenshots/TC-08.png 
@@ -61,14 +61,14 @@
 ### Chất lượng dữ liệu
 | TC-09 (TT-01): Giữ giấu và về chữ thường · Ưu tiên: Cao   
 | Bước      : 1. Chạy môi trường ảo: ./.venv/Scripts/Activate.ps1
-              2. python -m pytest -q hoặc python -m pytest -v
+              2. python -m pytest -q hoặc python -m pytest -v   
 | Mong đợi  : PASSED   
 | Thực tế   : tests/test_text.py::test_TT01_giu_dau_va_ve_chu_thuong PASSED         
 | PASS · docs/screenshots/TC-09.png 
 
 | TC-10 (TT-02): Ẩn SĐT, mail, mã serial · Ưu tiên: Cao   
 | Bước      : 1. Chạy môi trường ảo: ./.venv/Scripts/Activate.ps1
-              2. python -m pytest -q hoặc python -m pytest -v
+              2. python -m pytest -q hoặc python -m pytest -v   
 | Mong đợi  : PASSED   
 | Thực tế   : tests/test_text.py::test_TT02_thay_thong_tin_dinh_danh_bang_the PASSED          
 | PASS · docs/screenshots/TC-10.png 
