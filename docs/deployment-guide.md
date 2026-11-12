@@ -19,7 +19,7 @@ No local Python installation, Node.js, or external database server is required t
 ### Step 1: Clone the repository
 
 ```bash
-git clone --branch v1.0 https://github.com/npt8124/cdtn1-nguyenphuocthanh-l10 cdtn1-nguyenphuocthanh-l10
+git clone --branch v1.0 https://github.com/npt8124/cdtn1-nguyenphuocthanh-l10
 ```
 
 ### Step 2: Navigate to the project directory
