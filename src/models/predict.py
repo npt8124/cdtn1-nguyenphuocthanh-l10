@@ -34,7 +34,7 @@ def validate_description(description):
         for ch in raw
     )
 
-    if special_count / len(raw) > 1.0:
+    if special_count / len(raw) > 0.4:
         raise ValueError(
             "Mô tả chứa quá nhiều ký tự đặc biệt."
         )
