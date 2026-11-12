@@ -41,7 +41,7 @@ def validate_description(description):
 
     cleaned = lam_sach(description)
 
-    if len(cleaned) <= MIN_LENGTH:
+    if len(cleaned) < MIN_LENGTH:
         raise ValueError(
             f"Mô tả lỗi phải có ít nhất {MIN_LENGTH} ký tự."
         )
