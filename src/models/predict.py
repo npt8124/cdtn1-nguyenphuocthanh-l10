@@ -25,7 +25,7 @@ def validate_description(description):
     if not isinstance(description, str):
         raise ValueError("Mô tả lỗi phải là chuỗi văn bản.")
 
-    if not description.strip():
+    if description == "":
         raise ValueError("Vui lòng nhập mô tả lỗi.")
 
     raw = description.strip()
@@ -34,14 +34,14 @@ def validate_description(description):
         for ch in raw
     )
 
-    if special_count / len(raw) > 0.4:
+    if special_count / len(raw) > 1.0:
         raise ValueError(
             "Mô tả chứa quá nhiều ký tự đặc biệt."
         )
 
     cleaned = lam_sach(description)
 
-    if len(cleaned) < MIN_LENGTH:
+    if len(cleaned) <= MIN_LENGTH:
         raise ValueError(
             f"Mô tả lỗi phải có ít nhất {MIN_LENGTH} ký tự."
         )
