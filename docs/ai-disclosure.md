@@ -14,3 +14,11 @@
 | ChatGPT | Gợi ý code toàn bộ phần | `src/data/database.py`<br>`src/models`<br>`src/ui`<br>`app.py` | Viết dựa theo gợi ý của ChatGPT kết hợp cùng với src mẫu của tài liệu tham khảo có sẵn |
 | Gemini | Hướng dẫn sử dụng các lệnh trên Terminal và Git Bash | Tạo môi trường, tự kiểm thử | Chạy các câu lệnh đó |
 | — Không dùng — | | Toàn bộ `tests/`<br>`src/features/text.py`<br>`.gitignore`<br>`.env.example` | Không áp dụng |
+
+# BẢNG KHAI BÁO SỬ DỤNG CÔNG CỤ AI BT3
+
+| Công cụ | Dùng vào việc gì | Áp dụng ở phần nào | Đã kiểm chứng thế nào |
+| :--- | :--- | :--- | :--- |
+| **ChatGPT** | Hướng dẫn sử dụng và cấu hình Docker | `Dockerfile`; `docker-compose`; `.dockerignore` | Đối chiếu với tài liệu hướng dẫn và các web trên mạng. |
+| **Gemini** | Dịch tiếng Việt sang tiếng Anh phù hợp ngữ cảnh | Phần Deployment Guide, Tài liệu kỹ thuật | Đối chiếu, rà soát lại các từ ngữ, thuật ngữ có phù hợp hay không. |
+| *— không dùng —* | | Các phần còn lại | Không áp dụng |
