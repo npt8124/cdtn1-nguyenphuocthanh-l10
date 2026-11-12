@@ -25,7 +25,7 @@ def validate_description(description):
     if not isinstance(description, str):
         raise ValueError("Mô tả lỗi phải là chuỗi văn bản.")
 
-    if description == "":
+    if not description.strip():
         raise ValueError("Vui lòng nhập mô tả lỗi.")
 
     raw = description.strip()
