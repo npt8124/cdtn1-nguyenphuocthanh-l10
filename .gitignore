@@ -1,13 +1,27 @@
+
+# Environment và secrets
+.env
+.env.*
+!.env.example
+
+# Python
 .venv/
 venv/
 __pycache__/
 *.py[cod]
 .pytest_cache/
-.ipynb_checkpoints/
-.env
-*.pkl
-*.joblib
-artifacts/
-models/
-data/raw/
-!.env.example
+
+# mô hình ML
+artifacts/*.joblib
+reports/metrics.json
+
+# database file
+*.db
+*.sqlite
+*.sqlite3
+storage/
+
+# Logs và OS files
+*.log
+.DS_Store
+Thumbs.db
