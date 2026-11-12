@@ -1,0 +1,29 @@
+
+.git/
+.github/
+
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+
+.env
+.env.*
+!.env.example
+
+*.log
+
+.DS_Store
+Thumbs.db
+
+# Model và database
+artifacts/
+reports/
+storage/
+*.db
+*.sqlite
+*.sqlite3
+
+# Các tập dữ liệu lớn
+/data/raw/

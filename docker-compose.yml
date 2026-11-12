@@ -1,0 +1,16 @@
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: warranty-classifier
+    ports:
+      - "${APP_PORT:-8501}:8501"
+    volumes:
+      - warranty_data:/app/data
+    restart: unless-stopped
+    init: true
+
+volumes:
+  warranty_data:
